@@ -19,7 +19,7 @@ class LinkedList:
         new_node.next = self.head
         self.head = new_node
 
-    def insertAfter(self, prev_node, new_data):
+    def insert_after(self, prev_node, new_data):
         if prev_node is None:
             print("The given previous node must inLinkedList.")
             return
@@ -39,6 +39,20 @@ class LinkedList:
             temp = temp.next
         temp.next = new_node
 
+    def delete_node(self, key):
+        temp = self.head
+        # if head is key to be removed
+        if temp.data == key:
+            self.head = temp.next
+            temp = self.head
+            # return
+
+        while temp.next:
+            if temp.next.data == key:
+                temp.next = temp.next.next
+                continue
+            temp = temp.next
+
 
 if __name__ == "__main__":
     llist = LinkedList()
@@ -47,6 +61,10 @@ if __name__ == "__main__":
     llist.push(7)
     llist.push(1)
     llist.append(4)
-    llist.insertAfter(llist.head.next, 8)
-
+    llist.insert_after(llist.head.next, 8)
+    llist.insert_after(llist.head.next, 8)
+    llist.append(8)
+    llist.push(8)
+    llist.print()
+    llist.delete_node(8)
     llist.print()
